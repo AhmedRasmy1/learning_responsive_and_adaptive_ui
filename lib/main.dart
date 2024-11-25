@@ -20,15 +20,62 @@ class ResponsiveAndAdaptiveUI extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          body: Align(
-            alignment: Alignment.topCenter,
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: Container(
-                color: Colors.red,
-                width: MediaQuery.of(context).size.width,
-                height: 100,
-              ),
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 250,
+                ),
+                IntrinsicHeight(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          color: Colors.red,
+                          child: const Column(
+                            children: [
+                              SizedBox(
+                                height: 50,
+                              ),
+                              SizedBox(
+                                height: 50,
+                              ),
+                              SizedBox(
+                                height: 50,
+                              ),
+                              SizedBox(
+                                height: 50,
+                              ),
+                              SizedBox(
+                                height: 50,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: Container(
+                                color: Colors.blue,
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                color: Colors.brown,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         ),
