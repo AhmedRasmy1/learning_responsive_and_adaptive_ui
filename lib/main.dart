@@ -1,10 +1,15 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const ResponsiveAndAdaptiveUI());
 }
+
+var imagesUrl = [
+  'https://th.bing.com/th?q=Flutter+Icon.png&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.4&pid=InlineBlock&mkt=en-XA&cc=EG&setlang=en&adlt=strict&t=1&mw=247',
+  'https://th.bing.com/th?q=Flutter+Icon.png&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.4&pid=InlineBlock&mkt=en-XA&cc=EG&setlang=en&adlt=strict&t=1&mw=247',
+  'https://th.bing.com/th?q=Flutter+Icon.png&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.4&pid=InlineBlock&mkt=en-XA&cc=EG&setlang=en&adlt=strict&t=1&mw=247',
+  'https://th.bing.com/th?q=Flutter+Icon.png&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.4&pid=InlineBlock&mkt=en-XA&cc=EG&setlang=en&adlt=strict&t=1&mw=247',
+];
 
 class ResponsiveAndAdaptiveUI extends StatelessWidget {
   const ResponsiveAndAdaptiveUI({super.key});
@@ -14,7 +19,10 @@ class ResponsiveAndAdaptiveUI extends StatelessWidget {
     return const SafeArea(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Scaffold(body: ExpnadeedAndFlexible()),
+        home: Scaffold(
+          backgroundColor: Colors.red,
+          body: ExpnadeedAndFlexible(),
+        ),
       ),
     );
   }
@@ -25,31 +33,16 @@ class ExpnadeedAndFlexible extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Flexible(
-          child: FittedBox(
-            child: Icon(
-              Icons.air_rounded,
-              color: Colors.amber,
-              size: 300,
-            ),
-          ),
+    return GridView.builder(
+        itemCount: imagesUrl.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          crossAxisSpacing: 4.0,
+          mainAxisSpacing: 4.0,
         ),
-        Container(
-          color: Colors.red,
-          height: 200,
-        ),
-        Container(
-          color: Colors.black,
-          height: 200,
-        ),
-        Container(
-          color: Colors.amber,
-          height: 200,
-        ),
-      ],
-    );
+        itemBuilder: (context, index) {
+          return FittedBox(child: Image.network(imagesUrl[index]));
+        });
   }
 }
 
