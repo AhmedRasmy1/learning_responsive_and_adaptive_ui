@@ -16,12 +16,21 @@ class ResponsiveAndAdaptiveUI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          backgroundColor: Colors.red,
-          body: ExpnadeedAndFlexible(),
+          body: Align(
+            alignment: Alignment.topCenter,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Container(
+                color: Colors.red,
+                width: MediaQuery.of(context).size.width,
+                height: 100,
+              ),
+            ),
+          ),
         ),
       ),
     );
@@ -43,6 +52,15 @@ class ExpnadeedAndFlexible extends StatelessWidget {
         itemBuilder: (context, index) {
           return FittedBox(child: Image.network(imagesUrl[index]));
         });
+  }
+}
+
+class AcceptRatio extends StatelessWidget {
+  const AcceptRatio({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
 
