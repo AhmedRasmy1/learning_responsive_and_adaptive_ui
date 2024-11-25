@@ -23,7 +23,7 @@ class ResponsiveAndAdaptiveUI extends StatelessWidget {
                 constrains.maxWidth <= 800) {
               return const Text('Tablet Layout');
             }
-            return const Text('Desktop Layout');
+            return const DesktopLayout();
           },
         ),
       ),
@@ -64,6 +64,57 @@ class CustomMediaQuery extends StatelessWidget {
   }
 }
 
+class DesktopLayout extends StatefulWidget {
+  const DesktopLayout({super.key});
+
+  @override
+  State<DesktopLayout> createState() => _DesktopLayoutState();
+}
+
+class _DesktopLayoutState extends State<DesktopLayout> {
+  int number = 1;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: ListView.builder(
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  number = index + 1;
+                  setState(() {});
+                },
+                child: Container(
+                  color: Colors.amber,
+                  margin: const EdgeInsets.all(10),
+                  child: ListTile(
+                    title: Text(
+                      '${index + 1}',
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+        Expanded(
+          child: Container(
+            color: Colors.blue,
+            child: Center(
+              child: Text(
+                'You have selected $number',
+                style: const TextStyle(fontSize: 20),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class MobileLayout extends StatelessWidget {
   const MobileLayout({super.key});
 
@@ -71,30 +122,31 @@ class MobileLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ListTileDetails(
-                      number: index + 1,
-                    ),
-                  ),
-                );
-              },
-              child: Container(
-                color: Colors.amber,
-                margin: const EdgeInsets.all(10),
-                child: ListTile(
-                  title: Text(
-                    '${index + 1}',
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ListTileDetails(
+                    number: index + 1,
                   ),
                 ),
+              );
+            },
+            child: Container(
+              color: Colors.amber,
+              margin: const EdgeInsets.all(10),
+              child: ListTile(
+                title: Text(
+                  '${index + 1}',
+                ),
               ),
-            );
-          }),
+            ),
+          );
+        },
+      ),
     );
   }
 }
