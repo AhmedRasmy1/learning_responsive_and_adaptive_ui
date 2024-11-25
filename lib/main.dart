@@ -11,22 +11,44 @@ class ResponsiveAndAdaptiveUI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: LayoutBuilder(
-          builder: (context, constrains) {
-            log('Width: ${constrains.maxWidth}');
-            if (constrains.maxWidth <= 500) {
-              return const MobileLayout();
-            } else if (constrains.maxWidth > 500 &&
-                constrains.maxWidth <= 800) {
-              return const Text('Tablet Layout');
-            }
-            return const DesktopLayout();
-          },
-        ),
+    return const SafeArea(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(body: ExpnadeedAndFlexible()),
       ),
+    );
+  }
+}
+
+class ExpnadeedAndFlexible extends StatelessWidget {
+  const ExpnadeedAndFlexible({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const Flexible(
+          child: FittedBox(
+            child: Icon(
+              Icons.air_rounded,
+              color: Colors.amber,
+              size: 300,
+            ),
+          ),
+        ),
+        Container(
+          color: Colors.red,
+          height: 200,
+        ),
+        Container(
+          color: Colors.black,
+          height: 200,
+        ),
+        Container(
+          color: Colors.amber,
+          height: 200,
+        ),
+      ],
     );
   }
 }
