@@ -4,7 +4,7 @@ void main() {
   runApp(const ResponsiveAndAdaptiveUI());
 }
 
-var imagesUrl = [
+var imagesUrls = [
   'https://th.bing.com/th?q=Flutter+Icon.png&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.4&pid=InlineBlock&mkt=en-XA&cc=EG&setlang=en&adlt=strict&t=1&mw=247',
   'https://th.bing.com/th?q=Flutter+Icon.png&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.4&pid=InlineBlock&mkt=en-XA&cc=EG&setlang=en&adlt=strict&t=1&mw=247',
   'https://th.bing.com/th?q=Flutter+Icon.png&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.4&pid=InlineBlock&mkt=en-XA&cc=EG&setlang=en&adlt=strict&t=1&mw=247',
@@ -84,26 +84,26 @@ class ResponsiveAndAdaptiveUI extends StatelessWidget {
   }
 }
 
-class ExpnadeedAndFlexible extends StatelessWidget {
-  const ExpnadeedAndFlexible({super.key});
+class ExpandedAndFlexible extends StatelessWidget {
+  const ExpandedAndFlexible({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-        itemCount: imagesUrl.length,
+        itemCount: imagesUrls.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           crossAxisSpacing: 4.0,
           mainAxisSpacing: 4.0,
         ),
         itemBuilder: (context, index) {
-          return FittedBox(child: Image.network(imagesUrl[index]));
+          return Image.network(imagesUrls[index]);
         });
   }
 }
 
-class AcceptRatio extends StatelessWidget {
-  const AcceptRatio({super.key});
+class AspectRatio extends StatelessWidget {
+  const AspectRatio({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -231,6 +231,7 @@ class MobileLayout extends StatelessWidget {
   }
 }
 
+/// A widget that displays the details of a selected list tile.
 class ListTileDetails extends StatelessWidget {
   const ListTileDetails({super.key, required this.number});
   final int number;
